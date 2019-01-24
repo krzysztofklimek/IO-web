@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditKlientTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.EditKlientLabel_klientId}" for="klientId" />
+                    <h:inputText id="klientId" value="#{klientController.selected.klientId}" title="#{bundle.EditKlientTitle_klientId}" required="true" requiredMessage="#{bundle.EditKlientRequiredMessage_klientId}"/>
+                    <h:outputLabel value="#{bundle.EditKlientLabel_imie}" for="imie" />
+                    <h:inputText id="imie" value="#{klientController.selected.imie}" title="#{bundle.EditKlientTitle_imie}" required="true" requiredMessage="#{bundle.EditKlientRequiredMessage_imie}"/>
+                    <h:outputLabel value="#{bundle.EditKlientLabel_nazwisko}" for="nazwisko" />
+                    <h:inputText id="nazwisko" value="#{klientController.selected.nazwisko}" title="#{bundle.EditKlientTitle_nazwisko}" required="true" requiredMessage="#{bundle.EditKlientRequiredMessage_nazwisko}"/>
+                    <h:outputLabel value="#{bundle.EditKlientLabel_email}" for="email" />
+                    <h:inputText id="email" value="#{klientController.selected.email}" title="#{bundle.EditKlientTitle_email}" required="true" requiredMessage="#{bundle.EditKlientRequiredMessage_email}"/>
+                </h:panelGrid>
+                <h:commandLink action="#{klientController.update}" value="#{bundle.EditKlientSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{bundle.EditKlientViewLink}"/>
+                <br />
+                <h:commandLink action="#{klientController.prepareList}" value="#{bundle.EditKlientShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.EditKlientIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

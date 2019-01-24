@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateGrupaTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.CreateGrupaLabel_grupaId}" for="grupaId" />
+                    <h:inputText id="grupaId" value="#{grupaController.selected.grupaId}" title="#{bundle.CreateGrupaTitle_grupaId}" required="true" requiredMessage="#{bundle.CreateGrupaRequiredMessage_grupaId}"/>
+                    <h:outputLabel value="#{bundle.CreateGrupaLabel_nazwa}" for="nazwa" />
+                    <h:inputText id="nazwa" value="#{grupaController.selected.nazwa}" title="#{bundle.CreateGrupaTitle_nazwa}" required="true" requiredMessage="#{bundle.CreateGrupaRequiredMessage_nazwa}"/>
+                    <h:outputLabel value="#{bundle.CreateGrupaLabel_idTrener}" for="idTrener" />
+                    <h:selectOneMenu id="idTrener" value="#{grupaController.selected.idTrener}" title="#{bundle.CreateGrupaTitle_idTrener}" required="true" requiredMessage="#{bundle.CreateGrupaRequiredMessage_idTrener}">
+                        <f:selectItems value="#{trenerController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{grupaController.create}" value="#{bundle.CreateGrupaSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{grupaController.prepareList}" value="#{bundle.CreateGrupaShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.CreateGrupaIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

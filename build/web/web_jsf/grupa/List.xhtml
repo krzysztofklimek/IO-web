@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListGrupaTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:form styleClass="jsfcrud_list_form">
+                <h:panelGroup id="messagePanel" layout="block">
+                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </h:panelGroup>
+                <h:outputText escape="false" value="#{bundle.ListGrupaEmpty}" rendered="#{grupaController.items.rowCount == 0}"/>
+                <h:panelGroup rendered="#{grupaController.items.rowCount > 0}">
+                    <h:outputText value="#{grupaController.pagination.pageFirstItem + 1}..#{grupaController.pagination.pageLastItem + 1}/#{grupaController.pagination.itemsCount}"/>&nbsp;
+                    <h:commandLink action="#{grupaController.previous}" value="#{bundle.Previous} #{grupaController.pagination.pageSize}" rendered="#{grupaController.pagination.hasPreviousPage}"/>&nbsp;
+                    <h:commandLink action="#{grupaController.next}" value="#{bundle.Next} #{grupaController.pagination.pageSize}" rendered="#{grupaController.pagination.hasNextPage}"/>&nbsp;
+                    <h:dataTable value="#{grupaController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListGrupaTitle_grupaId}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.grupaId}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListGrupaTitle_nazwa}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.nazwa}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListGrupaTitle_idTrener}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idTrener}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="&nbsp;"/>
+                            </f:facet>
+                            <h:commandLink action="#{grupaController.prepareView}" value="#{bundle.ListGrupaViewLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{grupaController.prepareEdit}" value="#{bundle.ListGrupaEditLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{grupaController.destroy}" value="#{bundle.ListGrupaDestroyLink}"/>
+                        </h:column>
+                    </h:dataTable>
+                </h:panelGroup>
+                <br />
+                <h:commandLink action="#{grupaController.prepareCreate}" value="#{bundle.ListGrupaCreateLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ListGrupaIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

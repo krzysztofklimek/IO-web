@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewTrenerTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewTrenerLabel_trenerId}"/>
+                    <h:outputText value="#{trenerController.selected.trenerId}" title="#{bundle.ViewTrenerTitle_trenerId}"/>
+                    <h:outputText value="#{bundle.ViewTrenerLabel_imie}"/>
+                    <h:outputText value="#{trenerController.selected.imie}" title="#{bundle.ViewTrenerTitle_imie}"/>
+                    <h:outputText value="#{bundle.ViewTrenerLabel_nazwisko}"/>
+                    <h:outputText value="#{trenerController.selected.nazwisko}" title="#{bundle.ViewTrenerTitle_nazwisko}"/>
+                    <h:outputText value="#{bundle.ViewTrenerLabel_email}"/>
+                    <h:outputText value="#{trenerController.selected.email}" title="#{bundle.ViewTrenerTitle_email}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{trenerController.destroyAndView}" value="#{bundle.ViewTrenerDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle.ViewTrenerEditLink}"/>
+                <br />
+                <h:commandLink action="#{trenerController.prepareCreate}" value="#{bundle.ViewTrenerCreateLink}" />
+                <br />
+                <h:commandLink action="#{trenerController.prepareList}" value="#{bundle.ViewTrenerShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ViewTrenerIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>
