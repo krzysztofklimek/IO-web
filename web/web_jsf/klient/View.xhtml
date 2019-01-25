@@ -24,6 +24,9 @@
                     <h:outputText value="#{bundle.ViewKlientLabel_email}"/>
                     <h:outputText value="#{klientController.selected.email}" title="#{bundle.ViewKlientTitle_email}"/>
                 </h:panelGrid>
+                
+                <h:dataTable id="klient"></h:dataTable>
+                
                 <br />
                 <h:commandLink action="#{klientController.destroyAndView}" value="#{bundle.ViewKlientDestroyLink}"/>
                 <br />

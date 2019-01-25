@@ -19,7 +19,7 @@
                     <h:outputText value="#{klientController.pagination.pageFirstItem + 1}..#{klientController.pagination.pageLastItem + 1}/#{klientController.pagination.itemsCount}"/>&nbsp;
                     <h:commandLink action="#{klientController.previous}" value="#{bundle.Previous} #{klientController.pagination.pageSize}" rendered="#{klientController.pagination.hasPreviousPage}"/>&nbsp;
                     <h:commandLink action="#{klientController.next}" value="#{bundle.Next} #{klientController.pagination.pageSize}" rendered="#{klientController.pagination.hasNextPage}"/>&nbsp;
-                    <h:dataTable value="#{klientController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
+                    <h:dataTable value="#{klientController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px" id="klienci">
                         <h:column>
                             <f:facet name="header">
                                 <h:outputText value="#{bundle.ListKlientTitle_klientId}"/>

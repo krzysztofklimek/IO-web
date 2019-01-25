@@ -24,6 +24,9 @@
                     <h:outputText value="#{bundle.ViewTrenerLabel_email}"/>
                     <h:outputText value="#{trenerController.selected.email}" title="#{bundle.ViewTrenerTitle_email}"/>
                 </h:panelGrid>
+                
+                <h:dataTable id="trener"></h:dataTable>
+                
                 <br />
                 <h:commandLink action="#{trenerController.destroyAndView}" value="#{bundle.ViewTrenerDestroyLink}"/>
                 <br />
